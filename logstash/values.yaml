@@ -1,0 +1,20 @@
+logstashPipeline:
+  logstash.conf: |
+    input {
+      tcp {
+        port => 5044
+        codec => json_lines
+      }
+    }
+
+    filter {
+      geoip {
+        source => "client_ip"
+      }
+    }
+
+    output {
+      elasticsearch {
+        hosts => ["http://elasticsearch-master:9200"]
+      }
+    }

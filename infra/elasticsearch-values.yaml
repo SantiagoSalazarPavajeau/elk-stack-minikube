@@ -1,0 +1,20 @@
+replicas: 1
+minimumMasterNodes: 1
+esJavaOpts: "-Xms512m -Xmx512m"
+
+antiAffinity: "soft"
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: standard
+
+resources:
+  requests:
+    memory: "1Gi"
+    cpu: "500m"
+  limits:
+    memory: "2Gi"
+    cpu: "1"
